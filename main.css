@@ -1,0 +1,288 @@
+/* تنسيقات عامة */
+:root {
+    --primary-blue: #00a8ff; /* اللون الأزرق السماوي في الصورة */
+    --dark-blue: #1e293b;   /* لون النص الغامق */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cairo;
+}
+.navbar {
+    background: #fff;
+    padding: 15px 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    direction: rtl;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* اللوجو */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-text h1 {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    line-height: 1;
+}
+.logo-text p {
+    font-size: 0.8rem;
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+.logo-icon i {
+    font-size: 2rem;
+    color: var(--dark-blue);
+}
+/* الروابط */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+/* زرار الاتصال */
+.btn-call , .mobile-only-btn .btn-call {
+    background: var(--primary-blue);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+}
+.btn-call:hover {
+    background: #0086cc;
+    transform: translateY(-2px);
+}
+/* الموبايل */
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-blue);
+}
+@media (max-width: 992px) {
+    .nav-links.active {
+        display: flex;
+    }
+    .mobile-menu {
+        display: block;
+    }
+}
+/* --- ستايل الموبايل (لما التوجل يتفتح) --- */
+@media (max-width: 768px) {
+    /* 1. القائمة المخفية */
+    .nav-links {
+        display: none; /* مخفية في العادي */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* تظهر تحت النافبار */
+        right: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        z-index: 1000;
+        gap: 0; /* هنعتمد على الـ padding للأزرار */
+    }
+    /* 2. لما نضيف كلاس active عن طريق الـ JS */
+    .nav-links.active {
+        display: flex;
+    }
+    /* 3. تنسيق اللينكات جوه المنيو */
+    .nav-links li {
+        width: 100%;
+        text-align: right;
+        border-bottom: 1px solid #f1f5f9; /* خط خفيف بين العناصر */
+    }
+    .nav-links li a {
+        display: block;
+        padding: 15px 0;
+        font-size: 16px;
+        color: #1e293b;
+    }
+    /* 4. زرار "اتصل الآن" في الموبايل (زي الصورة بالظبط) */
+    .btn-call {
+        width: 100%; /* ياخد العرض كله */
+        justify-content: center;
+        margin-top: 15px;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 12px;
+        background-color: #00a8ff; /* اللون الأزرق السماوي */
+    }
+    /* 5. إظهار زرار التوجل (الهمبرجر) */
+    .mobile-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        order: -1; /* يخليه على الشمال لو اللوجو على اليمين */
+    }
+    .desktop-only-btn {
+        display: none !important; /* نخفي الزرار اللي كان بره عشان ميزحمش النافبار */
+    }
+    .mobile-only-btn {
+        display: block;
+        width: 100%;
+        margin-top: 20px; /* مسافة بسيطة بعد آخر لينك */
+    }
+    /* نخلي الزرار اللي جوه المنيو عريض وشكله زي الصورة */
+    .mobile-only-btn .btn-call {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 15px;
+        background-color: #00a8ff;
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+/* --- في الشاشات الكبيرة نضمن إن زرار التوجل مخفي --- */
+@media (min-width: 769px) {
+    .mobile-toggle {
+        display: none;
+    }
+    .nav-links {
+        display: flex !important; /* نضمن إنها ظاهرة في الديسكتوب */
+    }
+    .mobile-only-btn {
+        display: none !important; /* الزرار اللي جوه المنيو يختفي تماماً */
+    }
+    .desktop-only-btn {
+        display: block; /* الزرار اللي بره يظهر عادي */
+    }
+}
+/* landing */
+:root {
+    --main-blue: #00a8ff;
+    --main-green: #00d215;
+    --text-dark: #1e293b;
+}
+.hero-section {
+    padding: 80px 5%;
+    background-color: #f0f9ff; /* لون خلفية لبني فاتح جداً */
+    direction: rtl;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.hero-content {
+    flex: 1;
+    min-width: 350px;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.hero-content .highlight {
+    color: var(--main-blue);
+}
+.sub-text {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+/* الأزرار */
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.btn-primary {
+    background: var(--main-blue);
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2);
+}
+.btn-status {
+    background: var(--main-green);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+/* الإحصائيات */
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+.stat-item h3 {
+    font-size: 1.8rem;
+    color: var(--main-blue);
+    margin-bottom: 5px;
+}
+.stat-item p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+/* الصورة */
+.hero-image {
+    flex: 1;
+    min-width: 350px;
+}
+.hero-image img {
+    width: 100%;
+    border-radius: 30px; /* زوايا دائرية زي الصورة */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+/* ريسبونسيف للموبايل */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-primary, .btn-status {
+        width: 100%;
+        text-align: center;
+    }
+    .hero-stats {
+        justify-content: center;
+        gap: 20px;
+    }
+    .hero-image {
+        order: -1; /* الصورة تطلع فوق الكلام في الموبايل */
+    }
+}
