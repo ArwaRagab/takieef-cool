@@ -70,3 +70,7 @@ let observers = new IntersectionObserver((entries) => {
     threshold: 0.5
 });
 observers.observe(statsSection);
+// faq
+function toggleFaq(element) {
+    element.parentElement.classList.toggle('active');
+}
